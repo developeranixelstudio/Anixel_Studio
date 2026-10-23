@@ -1,0 +1,178 @@
+/* Skiper40 Animated CSS Links — Skiper UI */
+
+.skiper-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.5;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skiper-link__icon {
+  margin-left: 0.35em;
+  width: 0.65em;
+  height: 0.65em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.skiper-link:hover .skiper-link__icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skiper-link__icon--rotate {
+  margin-left: 0.5em;
+}
+
+.skiper-link:hover .skiper-link__icon--rotate {
+  opacity: 1;
+  transform: translateY(0) rotate(45deg);
+}
+
+.skiper-link__icon--slide {
+  margin-left: 0.5em;
+  transform: translateX(-4px) rotate(45deg);
+}
+
+.skiper-link:hover .skiper-link__icon--slide {
+  opacity: 1;
+  transform: translateX(0) rotate(45deg);
+}
+
+/* Link000: Base / Minimal */
+.skiper-link-000::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.05em;
+  background-color: currentColor;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.skiper-link-000:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* Link001: Underline Left to Right */
+.skiper-link-001::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 0.06em;
+  background-color: currentColor;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.skiper-link-001:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* Link002: Underline Right to Left */
+.skiper-link-002::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 0.06em;
+  background-color: currentColor;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.skiper-link-002:hover::before {
+  transform-origin: right;
+  transform: scaleX(1);
+}
+
+/* Link003: Underline Center Reveal */
+.skiper-link-003::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 0.06em;
+  background-color: currentColor;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.skiper-link-003:hover::before {
+  transform: scaleX(1);
+}
+
+/* Link004: Height Reveal (Cursor Style) */
+.skiper-link-004 {
+  padding: 0.15em 0.5em;
+  border-radius: 2px;
+}
+
+.skiper-link-004::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background-color: #FFFFFF;
+  mix-blend-mode: difference;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skiper-link-004:hover::before {
+  height: 100%;
+}
+
+/* Link005: Width Reveal (Cursor Style) */
+.skiper-link-005 {
+  padding: 0.15em 0.5em;
+  border-radius: 2px;
+}
+
+.skiper-link-005::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  mix-blend-mode: difference;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skiper-link-005:hover::before {
+  transform: scaleX(1);
+}

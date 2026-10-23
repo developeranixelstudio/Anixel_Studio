@@ -1,0 +1,390 @@
+/* Page 7: Insights Section Styles */
+
+.insights-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 140px 24px 130px;
+  background-color: #000000;
+  color: #FFFFFF;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Ambient Radial Backdrops */
+.insights-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: -5%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.insights-ambient-glow-right {
+  position: absolute;
+  bottom: 10%;
+  right: -8%;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 229, 171, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  filter: blur(95px);
+  z-index: 0;
+}
+
+.insights-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 45%, transparent 85%);
+  mask-image: radial-gradient(circle at 50% 40%, #000 45%, transparent 85%);
+}
+
+.insights-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---------- Header Area ---------- */
+.insights-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 72px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.insights-badge-wrap {
+  margin-bottom: 24px;
+}
+
+.insights-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.insights-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D4AF37;
+  box-shadow: 0 0 10px #D4AF37;
+}
+
+.insights-badge-text {
+  font-family: var(--font-subheadings, 'TF Mighu', monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Heading: Megante Font */
+.insights-heading {
+  font-family: var(--font-megante, 'Megante', 'Cinzel', serif);
+  font-size: clamp(38px, 4.8vw, 66px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  margin: 0 0 20px 0;
+}
+
+.insights-heading-word {
+  display: inline-block;
+  will-change: transform, opacity;
+  margin-right: 0.25em;
+}
+
+.insights-heading-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F6EDCD 40%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Lead Copy: TF Mighu */
+.insights-lead-desc {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 16px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 660px;
+  margin: 0 0 32px 0;
+}
+
+.insights-header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ---------- 3 Articles Grid ---------- */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 72px;
+}
+
+.insight-card-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 34px 28px !important;
+  background: rgba(12, 12, 16, 0.82) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 20px !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  will-change: transform, opacity;
+  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.insight-card-item:hover {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.12);
+}
+
+.insight-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.insight-card-meta {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #D4AF37;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.insight-card-readtime {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.insight-card-category {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: rgba(212, 175, 55, 0.85);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+/* Article Title: TF Mighu */
+.insight-card-title {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 700;
+  line-height: 1.32;
+  color: #FFFFFF;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Article Summary: TF Mighu */
+.insight-card-summary {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 15px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.74);
+  margin: 0 0 24px 0;
+  flex: 1;
+  font-weight: 400;
+}
+
+/* Takeaway Pill */
+.insight-card-takeaways {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.insight-takeaway-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #D4AF37;
+}
+
+.insight-takeaway-text {
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+}
+
+/* Card Bottom Link */
+.insight-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(212, 175, 55, 0.85);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.insight-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-size: 14px;
+  color: #D4AF37;
+  transition: all 0.25s ease;
+}
+
+.insight-card-item:hover .insight-card-arrow {
+  background: #D4AF37;
+  color: #000000;
+  transform: translateX(3px) scale(1.08);
+}
+
+/* ---------- Bottom CTA Banner with Magnet ---------- */
+.insights-bottom-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 56px 28px;
+  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, rgba(12, 12, 16, 0.6) 80%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 22px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.insights-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+  padding: 0 46px;
+  background: #D4AF37;
+  color: #030303;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 30px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.insights-cta-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 8px 38px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.insights-cta-arrow {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.insights-cta-btn:hover .insights-cta-arrow {
+  transform: translateX(4px);
+}
+
+.insights-cta-subhead {
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 26px;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+.insights-cta-footnote {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: rgba(212, 175, 55, 0.7);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (max-width: 1100px) {
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .insights-section {
+    padding: 90px 18px 70px;
+  }
+  .insights-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .insights-heading {
+    font-size: 32px;
+  }
+  .insights-bottom-cta {
+    padding: 36px 18px;
+  }
+  .insights-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

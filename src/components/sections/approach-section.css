@@ -1,0 +1,368 @@
+/* Page 6: Our Approach Section Styles */
+
+.approach-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 140px 24px 130px;
+  background-color: #000000;
+  color: #FFFFFF;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Ambient Radial Backdrops */
+.approach-ambient-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.approach-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 45%, transparent 85%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 45%, transparent 85%);
+}
+
+.approach-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---------- Header Area ---------- */
+.approach-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 72px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.approach-badge-wrap {
+  margin-bottom: 24px;
+}
+
+.approach-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.approach-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D4AF37;
+  box-shadow: 0 0 10px #D4AF37;
+}
+
+.approach-badge-text {
+  font-family: var(--font-subheadings, 'TF Mighu', monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Heading: Megante Font */
+.approach-heading {
+  font-family: var(--font-megante, 'Megante', 'Cinzel', serif);
+  font-size: clamp(38px, 4.8vw, 66px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  margin: 0 0 20px 0;
+}
+
+.approach-heading-word {
+  display: inline-block;
+  will-change: transform, opacity;
+  margin-right: 0.25em;
+}
+
+.approach-heading-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F6EDCD 40%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.approach-subheading {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 16px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 620px;
+  margin: 0;
+}
+
+/* ---------- 4 Steps Grid & Timeline ---------- */
+.approach-steps-wrap {
+  position: relative;
+  margin-bottom: 72px;
+}
+
+/* Horizontal Connector Line for Desktop */
+.approach-timeline-track {
+  position: absolute;
+  top: 50px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 0;
+  display: block;
+}
+
+.approach-timeline-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #D4AF37 0%, #F6EDCD 100%);
+  box-shadow: 0 0 12px #D4AF37;
+  transition: width 0.3s ease;
+}
+
+.approach-steps-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.approach-step-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 36px 26px !important;
+  background: rgba(12, 12, 16, 0.82) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 20px !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  will-change: transform, opacity;
+  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.approach-step-card:hover {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.12);
+}
+
+.approach-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.approach-step-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4AF37;
+  font-family: var(--font-mono, monospace);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.approach-step-card:hover .approach-step-icon-wrap {
+  background: #D4AF37;
+  color: #000000;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.approach-step-phase-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: rgba(212, 175, 55, 0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Step Title: TF Mighu */
+.approach-step-title {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Step Description: TF Mighu */
+.approach-step-desc {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 15px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.76);
+  margin: 0 0 24px 0;
+  flex: 1;
+  font-weight: 400;
+}
+
+/* Step Tags */
+.approach-step-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.approach-tag-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+}
+
+.approach-tag-bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D4AF37;
+}
+
+/* ---------- Bottom CTA Banner with Magnet ---------- */
+.approach-bottom-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 56px 28px;
+  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, rgba(12, 12, 16, 0.6) 80%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 22px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.approach-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+  padding: 0 46px;
+  background: #D4AF37;
+  color: #030303;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 30px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.approach-cta-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 8px 38px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.approach-cta-arrow {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.approach-cta-btn:hover .approach-cta-arrow {
+  transform: translateX(4px);
+}
+
+.approach-cta-subhead {
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 26px;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+.approach-cta-footnote {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: rgba(212, 175, 55, 0.7);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (max-width: 1100px) {
+  .approach-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .approach-timeline-track {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .approach-section {
+    padding: 90px 18px 70px;
+  }
+  .approach-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .approach-heading {
+    font-size: 32px;
+  }
+  .approach-bottom-cta {
+    padding: 36px 18px;
+  }
+  .approach-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

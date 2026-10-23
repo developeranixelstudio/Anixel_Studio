@@ -1,0 +1,390 @@
+/* =========================================================================
+   ANIXEL STUDIO FOOTER STYLES
+   - Exact recreation of modern agency footer with central ambient glow
+   - 4-column layout: Brand info, Explore, Company, Get In Touch
+   - Divider line, Copyright, Privacy Policy | Terms & Conditions, and Social Icons
+   - Giant monumental watermark typography bleeding off the bottom edge
+   ========================================================================= */
+
+.anixel-footer {
+  position: relative;
+  background-color: #030303;
+  color: #FFFFFF;
+  padding: 100px 0 0 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+}
+
+/* Central Ethereal Glow */
+.footer-ambient-aura {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 500px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(16, 185, 129, 0.14) 0%,
+    rgba(0, 229, 255, 0.08) 35%,
+    rgba(212, 175, 55, 0.04) 60%,
+    transparent 75%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* =========================================================================
+   TOP CTA BANNER: "Have a Project in Mind? Let's Talk."
+   ========================================================================= */
+.footer-top-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 44px;
+  background: rgba(14, 14, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  margin-bottom: 72px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-top-cta-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-top-cta-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #D4AF37;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.footer-top-cta-heading {
+  font-family: var(--font-megante, 'Megante', 'Cinzel', serif);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.footer-top-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 34px;
+  background: #D4AF37;
+  color: #030303;
+  border-radius: 9999px;
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+  transition: all 0.25s ease;
+}
+
+.footer-top-cta-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 6px 28px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.footer-top-cta-btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.footer-top-cta-btn:hover .footer-top-cta-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* =========================================================================
+   FOUR-COLUMN NAVIGATION GRID
+   ========================================================================= */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1.3fr;
+  gap: 48px;
+  margin-bottom: 72px;
+}
+
+/* Column 1: Brand Info */
+.footer-col-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-brand-logo-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10B981;
+}
+
+.footer-brand-logo-img {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-brand-title {
+  font-family: var(--font-megante, 'Megante', 'Cinzel', serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.footer-brand-desc-wrapper {
+  position: relative;
+  padding-left: 16px;
+  border-left: 2px solid #10B981;
+}
+
+.footer-brand-desc {
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  max-width: 320px;
+}
+
+/* Nav Columns (EXPLORE, COMPANY, GET IN TOUCH) */
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-col-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-nav-item a,
+.footer-nav-item button {
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-nav-item a:hover,
+.footer-nav-item button:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+.footer-nav-item.highlight a {
+  color: #D4AF37;
+}
+
+.footer-nav-item.highlight a:hover {
+  color: #FFFFFF;
+}
+
+.footer-location-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================================
+   DIVIDER LINE & BOTTOM ROW
+   ========================================================================= */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 28px;
+}
+
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-legal-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-btn:hover {
+  color: #D4AF37;
+  text-decoration: underline;
+}
+
+.footer-legal-separator {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* Social Media Icons */
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.footer-social-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.footer-social-link svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.7;
+}
+
+/* =========================================================================
+   GIANT MONUMENTAL WATERMARK TYPOGRAPHY (Clipped at Bottom)
+   ========================================================================= */
+.footer-monumental-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  line-height: 0.72;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  padding-top: 10px;
+}
+
+.footer-monumental-text {
+  font-family: 'Switzer', 'Clash Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(90px, 17.5vw, 270px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  display: block;
+  transform: translateY(0.12em);
+  opacity: 0.96;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================= */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 680px) {
+  .anixel-footer {
+    padding-top: 60px;
+  }
+  .footer-top-cta {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .footer-monumental-text {
+    font-size: clamp(70px, 20vw, 130px);
+    transform: translateY(0.08em);
+  }
+}

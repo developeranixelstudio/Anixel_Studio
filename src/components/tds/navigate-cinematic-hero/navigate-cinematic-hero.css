@@ -1,0 +1,328 @@
+/* The layout is drawn in "design pixels" (--tds-nh-dp, one pixel of a 1440-wide design), so the
+   headline always spans the full width and the composition scales proportionally.
+   Typography:
+   - "ANIXEL STUDIO": Megante font
+   - Sub headings, nav, copy, labels: TF Mighu by Type Floek (with Clash Grotesk / Switzer fallback) */
+
+
+.tds-navhero {
+  --tds-nh-bg: #030303;
+  --tds-nh-ink: #f9faf5;
+  --tds-nh-cream: #faf8d2;
+  --tds-nh-gutter: clamp(16px, 2.222vw, 32px);
+  /* one design pixel: follows the width, capped on very wide screens so the scene never outgrows the height */
+  --tds-nh-dp: calc(min(1vw, 1.98vh) / 14.4);
+  /* tall screens: pins at comfortable height; wide screens: headline pins at 25.6% height */
+  --tds-nh-headline-top: max(calc(101.4vh - 776 * var(--tds-nh-dp)), 25.6vh);
+  position: relative;
+  background: var(--tds-nh-bg);
+  color: var(--tds-nh-ink);
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+.tds-navhero *,
+.tds-navhero *::before,
+.tds-navhero *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.tds-navhero a {
+  color: inherit;
+  text-decoration: none;
+}
+.tds-navhero img,
+.tds-navhero video {
+  display: block;
+}
+
+/* ---------- Preloader ---------- */
+.tds-navhero__loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--tds-nh-bg);
+  overflow: hidden;
+}
+.tds-navhero__count {
+  position: absolute;
+  right: var(--tds-nh-gutter);
+  bottom: var(--tds-nh-gutter);
+  font-family: var(--font-megante, "Megante", "Cinzel", Georgia, serif);
+  font-weight: 500;
+  font-size: clamp(120px, 22vw, 360px);
+  line-height: normal;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  white-space: nowrap;
+}
+
+/* ---------- Nav (fixed, shared) ---------- */
+.tds-navhero__nav {
+  position: fixed;
+  left: var(--tds-nh-gutter);
+  right: var(--tds-nh-gutter);
+  top: var(--tds-nh-gutter);
+  height: 48px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tds-navhero__nav-left {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.tds-navhero__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 40px;
+}
+.tds-navhero__logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  display: block;
+}
+.tds-navhero__links {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  font-size: 14px;
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", sans-serif);
+  letter-spacing: -0.21px;
+  line-height: normal;
+  white-space: nowrap;
+}
+.tds-navhero__cta {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 172px;
+  height: 44px;
+  color: var(--tds-nh-cream);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+}
+.tds-navhero__cta-frame {
+  position: absolute;
+  inset: 0;
+}
+.tds-navhero__cta-label {
+  position: relative;
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", sans-serif);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  line-height: normal;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------- Hero ---------- */
+.tds-navhero__hero {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--tds-nh-bg);
+}
+.tds-navhero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.tds-navhero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  filter: blur(4.8px);
+  transform: scale(1.06); /* slight over-scale to hide blurred edges */
+}
+
+/* Headline: ANIXEL STUDIO in Megante Font */
+.tds-navhero__headline {
+  position: absolute;
+  left: 0;
+  top: var(--tds-nh-headline-top);
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-megante, "Megante", "Cinzel", Georgia, serif);
+  font-weight: 700;
+  font-size: clamp(28px, calc(205 * var(--tds-nh-dp)), 10.2vw);
+  letter-spacing: clamp(-0.5px, 0.02em, 2px);
+  line-height: normal;
+  color: #fff;
+  white-space: nowrap;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Each letter has its own mask: the intro rise is clipped per letter, while the letters stay free
+   to travel up past the headline box during the scroll. */
+.tds-navhero__char {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  will-change: transform;
+}
+.tds-navhero__char-in {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* The bottom fade is one viewport taller than it looks: a solid slab below the fold rides up just
+   ahead of the handle section on scroll, so the two sections blend through the gradient. */
+.tds-navhero__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -100vh;
+  height: 138.4vh;
+  background: linear-gradient(to top, #030303 0%, #030303 calc(100% - 38.4vh), rgba(3, 3, 3, 0) 100%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.tds-navhero__learn {
+  position: absolute;
+  left: 27.25vw;
+  bottom: calc(var(--tds-nh-gutter) - 1px);
+  display: flex;
+  align-items: center;
+  gap: 11.817px;
+  color: var(--tds-nh-cream);
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", sans-serif);
+  font-size: 14px;
+  letter-spacing: -0.21px;
+  line-height: normal;
+  white-space: nowrap;
+}
+.tds-navhero__learn svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+  flex: none;
+}
+
+.tds-navhero__work {
+  position: absolute;
+  right: var(--tds-nh-gutter);
+  top: calc(var(--tds-nh-headline-top) - 55 * var(--tds-nh-dp));
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", sans-serif);
+  font-size: 14px;
+  letter-spacing: -0.21px;
+  line-height: normal;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tds-navhero__copyright {
+  position: absolute;
+  left: var(--tds-nh-gutter);
+  bottom: var(--tds-nh-gutter);
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", sans-serif);
+  font-size: 14px;
+  letter-spacing: -0.21px;
+  line-height: normal;
+  color: var(--tds-nh-cream);
+  white-space: nowrap;
+}
+
+/* ---------- Handle (second screen) ---------- */
+.tds-navhero__outro {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--tds-nh-bg);
+  display: grid;
+  place-items: center;
+}
+.tds-navhero__outro-title {
+  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", system-ui, sans-serif);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: 0.05em;
+  color: #fff;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tds-navhero__loader {
+    display: none;
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1023px) {
+  .tds-navhero__nav-left {
+    gap: 40px;
+  }
+  .tds-navhero__links {
+    gap: 36px;
+  }
+  .tds-navhero__learn {
+    left: auto;
+    right: var(--tds-nh-gutter);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 639px) {
+  .tds-navhero {
+    --tds-nh-gutter: 16px;
+  }
+  .tds-navhero__links {
+    display: none;
+  }
+  .tds-navhero__cta {
+    width: 150px;
+    height: 40px;
+  }
+  .tds-navhero__cta-frame {
+    width: 100%;
+    height: 100%;
+  }
+  .tds-navhero__cta-label,
+  .tds-navhero__work,
+  .tds-navhero__learn,
+  .tds-navhero__copyright {
+    font-size: 12px;
+  }
+  .tds-navhero__work {
+    top: calc(var(--tds-nh-headline-top) - 40px);
+  }
+  .tds-navhero__learn {
+    right: var(--tds-nh-gutter);
+    left: auto;
+  }
+  .tds-navhero__learn svg {
+    width: 18px;
+    height: 18px;
+  }
+  /* scene sits low on phones, so fade is shallower */
+  .tds-navhero__fade {
+    height: 122vh;
+    background: linear-gradient(
+      to top,
+      #030303 0%,
+      #030303 calc(100% - 22vh),
+      rgba(3, 3, 3, 0) 100%
+    );
+  }
+}

@@ -1,0 +1,280 @@
+/* Page 3: Introduction Section */
+
+.intro-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 140px 24px 120px;
+  background-color: #000000;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Ambient Radial Glow */
+.intro-ambient-glow {
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.intro-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(circle at 60% 50%, #000 40%, transparent 85%);
+  mask-image: radial-gradient(circle at 60% 50%, #000 40%, transparent 85%);
+}
+
+.intro-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+/* ---------- Left Column ---------- */
+.intro-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.intro-badge-wrap {
+  margin-bottom: 28px;
+}
+.intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.intro-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D4AF37;
+  box-shadow: 0 0 10px #D4AF37;
+}
+.intro-badge-text {
+  font-family: var(--font-subheadings, 'TF Mighu', monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Heading: Megante Font */
+.intro-heading {
+  font-family: var(--font-megante, 'Megante', 'Cinzel', serif);
+  font-size: clamp(38px, 4.8vw, 66px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+.intro-heading-line {
+  display: block;
+  color: #FFFFFF;
+  will-change: transform, opacity;
+}
+.intro-heading-highlight {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F6EDCD 40%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-lead-note {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+  margin: 0 0 38px 0;
+}
+
+/* CTA Wrap with Magnet */
+.intro-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.intro-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 36px;
+  background: #D4AF37;
+  color: #030303;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.intro-cta-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+.intro-cta-arrow {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+.intro-cta-btn:hover .intro-cta-arrow {
+  transform: translateX(4px);
+}
+.intro-cta-subtext {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: rgba(212, 175, 55, 0.7);
+  letter-spacing: 0.05em;
+}
+
+/* Metrics Row */
+.intro-metrics-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 540px;
+}
+.intro-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.intro-metric-val {
+  font-family: var(--font-megante, 'Megante', 'Cinzel', serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.intro-metric-label {
+  font-family: var(--font-subheadings, 'TF Mighu', sans-serif);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.02em;
+}
+.intro-metric-sep {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Right Column: 3 Story Cards ---------- */
+.intro-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro-story-card {
+  padding: 28px 26px !important;
+  background: rgba(12, 12, 15, 0.88) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 16px !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  will-change: transform, opacity;
+}
+
+.intro-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.intro-card-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: #D4AF37;
+  font-weight: 700;
+}
+.intro-card-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.intro-card-copy {
+  font-family: var(--font-subheadings, 'TF Mighu', 'Clash Grotesk', 'Switzer', sans-serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .intro-container {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .intro-section {
+    padding: 100px 20px 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro-section {
+    padding: 80px 16px 60px;
+  }
+  .intro-heading {
+    font-size: 32px;
+  }
+  .intro-metrics-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .intro-metric-sep {
+    display: none;
+  }
+  .intro-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -11,7 +11,7 @@ import { Footer } from './components/Footer';
 import LegalModal from './components/LegalModal';
 import ContactModal from './components/ContactModal';
 import CustomCursor from './components/CustomCursor';
-import './styles/cinema-3d.css';
+import './styles/custom-cursor.css';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -64,11 +64,6 @@ export default function App() {
     >
       {/* Interactive 3D Gold Custom Cursor */}
       <CustomCursor />
-
-      {/* Cinematic 3D Lighting & Texture Overlays */}
-      <div className="cinema-grain" aria-hidden="true" />
-      <div className="cinema-vignette" aria-hidden="true" />
-      <div className="ambient-glow-bg" aria-hidden="true" />
 
       {/* =========================================================================
           PAGE 1: NAVIGATE CINEMATIC HERO (ANIXEL STUDIO)

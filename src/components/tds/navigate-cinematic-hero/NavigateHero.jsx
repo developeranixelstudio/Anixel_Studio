@@ -5,8 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./navigate-cinematic-hero.css";
 
-const ThreeHeroScene = React.lazy(() => import("../../three/ThreeHeroScene"));
-
 // Turns a line of text into one mask per letter (.tds-navhero__char) wrapping the glyph
 // (.tds-navhero__char-in). The glyph rises inside its mask for the intro, while the mask itself is
 // free to travel for the scroll parallax. Inline-block spans lose the font's kerning, so every
@@ -301,96 +299,17 @@ export function NavigateHero({
 
       {/* ============ HERO SECTION ============ */}
       <section className="tds-navhero__hero" id="hero" data-hero>
-        <div className="tds-navhero__bg" data-bg>
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "radial-gradient(ellipse 80% 60% at 50% 45%, rgba(212,175,55,0.07) 0%, transparent 65%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(212,175,55,0.04) 0%, transparent 60%), #030303",
-            }}
+        <div className="tds-navhero__bg">
+          <video
+            className="tds-navhero__video"
+            data-video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            src={video}
           />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              opacity: 0.03,
-              backgroundImage:
-                "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)",
-              backgroundSize: "80px 80px",
-            }}
-          />
-          {video && (
-            <video
-              className="tds-navhero__video"
-              data-video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              src={video}
-              style={{ opacity: 0.3 }}
-            />
-          )}
-          <React.Suspense fallback={null}>
-            <ThreeHeroScene />
-          </React.Suspense>
-          <div
-            className="geo-3d-float"
-            aria-hidden="true"
-            style={{ top: "15%", right: "8%", animationDelay: "0s", animationDuration: "16s" }}
-          >
-            <svg
-              width="160"
-              height="160"
-              viewBox="0 0 160 160"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ opacity: 0.09 }}
-            >
-              <polygon
-                points="80,6 154,43 154,117 80,154 6,117 6,43"
-                stroke="#D4AF37"
-                strokeWidth="1"
-                fill="none"
-              />
-              <polygon
-                points="80,26 134,53 134,107 80,134 26,107 26,53"
-                stroke="#D4AF37"
-                strokeWidth="0.5"
-                fill="none"
-              />
-              <line x1="80" y1="6" x2="80" y2="154" stroke="#D4AF37" strokeWidth="0.3" />
-              <line x1="6" y1="43" x2="154" y2="117" stroke="#D4AF37" strokeWidth="0.3" />
-              <line x1="154" y1="43" x2="6" y2="117" stroke="#D4AF37" strokeWidth="0.3" />
-              <circle cx="80" cy="80" r="28" stroke="#D4AF37" strokeWidth="0.4" fill="none" />
-            </svg>
-          </div>
-          <div
-            className="geo-3d-float geo-3d-float-slow"
-            aria-hidden="true"
-            style={{ bottom: "20%", left: "5%", animationDelay: "-7s" }}
-          >
-            <svg
-              width="100"
-              height="100"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ opacity: 0.07 }}
-            >
-              <polygon
-                points="50,4 96,28 96,72 50,96 4,72 4,28"
-                stroke="#D4AF37"
-                strokeWidth="1"
-                fill="none"
-              />
-              <line x1="50" y1="4" x2="50" y2="96" stroke="#D4AF37" strokeWidth="0.4" />
-              <line x1="4" y1="28" x2="96" y2="72" stroke="#D4AF37" strokeWidth="0.4" />
-              <line x1="96" y1="28" x2="4" y2="72" stroke="#D4AF37" strokeWidth="0.4" />
-            </svg>
-          </div>
         </div>
 
         {/* Headline: ANIXEL STUDIO in Megante Font */}

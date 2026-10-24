@@ -1,6 +1,7 @@
 /* Typography Imports: Boska, Clash Grotesk, Switzer (Fontshare) & Megante (CDNFonts) */
 @import url('https://api.fontshare.com/v2/css?f[]=boska@400,500,700&f[]=clash-grotesk@400,500,600,700&f[]=switzer@100,200,300,400,500,600,700,800,900&display=swap');
 @import url('https://fonts.cdnfonts.com/css/megante');
+@import "tailwindcss";
 
 /* Custom Typography Embeds */
 @font-face {

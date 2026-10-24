@@ -13,42 +13,55 @@ const ThreeSectionOrb = lazy(() => import('../three/ThreeSectionOrb'));
 
 const CAPABILITIES_SLIDES = [
   {
+    num: '01 //',
+    eyebrow: 'GROWTH & MEDIA',
     text: 'Digital Marketing & Lead Generation',
-    eyebrow: 'Growth & Media',
     description: 'Paid campaigns, social strategy, conversion funnels, and performance systems engineered for measurable growth.',
+    tags: ['Paid Media', 'Targeting', 'Conversion Funnels', 'Performance'],
     src: '/capabilities/capability-1.webp',
   },
   {
+    num: '02 //',
+    eyebrow: 'SEARCH & DISCOVERY',
     text: 'SEO, AEO & GEO',
-    eyebrow: 'Search & Discovery',
     description: 'Search architecture that builds visibility across traditional search, answer engines, and AI discovery.',
+    tags: ['Answer Engine Opt.', 'Generative Search', 'Algorithmic Rank', 'Technical SEO'],
     src: '/capabilities/capability-2.webp',
   },
   {
+    num: '03 //',
+    eyebrow: 'BRAND ARCHITECTURE',
     text: 'Branding & Creative Design',
-    eyebrow: 'Brand Architecture',
     description: 'Distinctive identities, design systems, and digital interfaces built to make brands recognizable and coherent.',
+    tags: ['Visual Identity', 'Design Systems', 'Interface Architecture', 'Brand Book'],
     src: '/capabilities/capability-3.webp',
   },
   {
+    num: '04 //',
+    eyebrow: 'DIGITAL ENGINEERING',
     text: 'Website & App Development',
-    eyebrow: 'Digital Engineering',
     description: 'High-performance websites, commerce platforms, and applications with thoughtful interactions and scalable foundations.',
+    tags: ['Fullstack Web', 'High-Performance Apps', 'E-Commerce', 'Spatial UI'],
     src: '/capabilities/capability-4.webp',
   },
   {
+    num: '05 //',
+    eyebrow: 'STUDIO & CINEMA',
     text: 'Creative Content Production',
-    eyebrow: 'Studio & Cinema',
     description: 'Cinematic video, animation, product photography, and visual storytelling that turns ideas into culture.',
+    tags: ['3D Motion', 'Cinematic Video', 'Visual Storytelling', 'Copywriting'],
     src: '/capabilities/capability-5.webp',
   },
   {
+    num: '06 //',
+    eyebrow: 'ENTERPRISE TECH',
     text: 'Business Technology Solutions',
-    eyebrow: 'Enterprise Tech',
     description: 'Tailored CRM, ERP, cloud, and workflow systems that connect operations and help teams move faster.',
+    tags: ['Enterprise CRM', 'Cloud Systems', 'Custom Workflows', 'Integrations'],
     src: '/capabilities/capability-6.webp',
   },
 ];
+
 
 const SERVICES_DATA = [
   {
@@ -278,17 +291,22 @@ export function ServicesSection({ onKnowMore, onOpenContact }) {
             </Magnet>
           </div>
         </div>
+      </div>
 
-        {/* 3D Horizontal Rotating Card Capabilities Slider */}
+      {/* 3D Horizontal Rotating Card Capabilities Slider (Full-Width Viewport Sticky Pinning) */}
+      <div className="w-full relative my-8" style={{ overflowX: 'clip' }}>
         <CardsRotateSlider
           images={CAPABILITIES_SLIDES}
-          rotationAmount={1.05}
-          verticalDrift={0.9}
+          rotationAmount={1.1}
+          verticalDrift={1.1}
           perspective={1100}
-          scrollSmoothing={0.85}
+          scrollSmoothing={1}
           textColor="#F9F6EA"
+          bgClassName="bg-transparent"
         />
+      </div>
 
+      <div className="services-container">
         {/* 6 Services Spotlight Cards Grid */}
         <div className="services-grid" ref={gridRef}>
           {SERVICES_DATA.map((srv, idx) => (

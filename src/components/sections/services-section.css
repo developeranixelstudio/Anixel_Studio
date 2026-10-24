@@ -3,10 +3,11 @@
 .services-section {
   position: relative;
   min-height: 100vh;
-  padding: 140px 24px 130px;
+  padding: 120px 0 100px;
   background-color: #000000;
   color: #FFFFFF;
-  overflow: hidden;
+  overflow: visible;
+  overflow-x: clip;
   border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
@@ -56,6 +57,7 @@
   max-width: 1320px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 24px;
 }
 
 /* ---------- Header Area ---------- */

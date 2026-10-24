@@ -223,7 +223,7 @@ const Skiper40 = () => {
         padding: "40px 20px",
       }}
     >
-      <Link001 href="mailto:contact@anixelstudio.com">contact@anixelstudio.com</Link001>
+      <Link001 href="mailto:sahilpoojari@anixelstudio.com">sahilpoojari@anixelstudio.com</Link001>
       <Link002 href="https://anixelstudio.com">Explore Anixel Studio</Link002>
       <Link003 href="#services">Our Capabilities</Link003>
       <Link004 href="#approach">Our Methodology</Link004>

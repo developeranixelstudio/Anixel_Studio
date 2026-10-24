@@ -24,9 +24,8 @@ export function IntroductionSection({ onConnect, onOpenContact }) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
-          end: 'bottom 15%',
-          toggleActions: 'play reverse play reverse',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
         },
       });
 

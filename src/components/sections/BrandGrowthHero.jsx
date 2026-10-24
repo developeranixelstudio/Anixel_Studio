@@ -119,9 +119,8 @@ export function BrandGrowthHero({ onExploreServices, onOpenContact }) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
-          end: 'bottom 15%',
-          toggleActions: 'play reverse play reverse',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
         },
       });
 

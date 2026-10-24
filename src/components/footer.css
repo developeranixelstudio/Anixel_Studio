@@ -343,7 +343,7 @@
 
 .footer-monumental-text {
   font-family: 'Switzer', 'Clash Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(90px, 17.5vw, 270px);
+  font-size: clamp(50px, 11.2vw, 170px);
   font-weight: 900;
   letter-spacing: -0.04em;
   color: #FFFFFF;
@@ -384,7 +384,7 @@
     gap: 16px;
   }
   .footer-monumental-text {
-    font-size: clamp(70px, 20vw, 130px);
+    font-size: clamp(32px, 10vw, 62px);
     transform: translateY(0.08em);
   }
 }

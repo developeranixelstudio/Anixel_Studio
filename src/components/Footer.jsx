@@ -99,7 +99,7 @@ export function Footer({ onOpenContact, onOpenLegal }) {
     if (el && window.__lenis) {
       window.__lenis.scrollTo(el, { offset: 0 });
     } else {
-      window.location.href = 'mailto:contact@anixelstudio.com?subject=Project%20Inquiry%20-%20Anixel%20Studio';
+      window.location.href = 'mailto:sahilpoojari@anixelstudio.com?subject=Project%20Inquiry%20-%20Anixel%20Studio';
     }
   };
 
@@ -202,7 +202,7 @@ export function Footer({ onOpenContact, onOpenLegal }) {
             <h4 className="footer-col-title">GET IN TOUCH</h4>
             <ul className="footer-nav-list">
               <li className="footer-nav-item highlight">
-                <a href="mailto:contact@anixelstudio.com">contact@anixelstudio.com</a>
+                <a href="mailto:sahilpoojari@anixelstudio.com">sahilpoojari@anixelstudio.com</a>
               </li>
               <li className="footer-nav-item">
                 <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -299,7 +299,7 @@ export function Footer({ onOpenContact, onOpenLegal }) {
           GIANT MONUMENTAL WATERMARK TYPOGRAPHY (Matching "Ascenth" in reference)
           ========================================================================= */}
       <div className="footer-monumental-wrap" ref={monumentalRef} aria-hidden="true">
-        <h2 className="footer-monumental-text">Anixel</h2>
+        <h2 className="footer-monumental-text">Anixel Studio</h2>
       </div>
     </footer>
   );

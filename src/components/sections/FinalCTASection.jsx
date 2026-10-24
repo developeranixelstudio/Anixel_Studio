@@ -223,8 +223,8 @@ export function FinalCTASection({ onConnect, onExplorePortfolio }) {
 
               <div className="final-cta-meta-item">
                 <span>Direct Dialogue:</span>
-                <a href="mailto:contact@anixelstudio.com" className="final-cta-email-link">
-                  contact@anixelstudio.com
+                <a href="mailto:sahilpoojari@anixelstudio.com" className="final-cta-email-link">
+                  sahilpoojari@anixelstudio.com
                 </a>
               </div>
 

@@ -72,20 +72,13 @@ export function NavigateHero({
     const loader = q("[data-loader]");
     const counter = q("[data-count]");
     const headlineEl = q("[data-headline]");
-    const outroTitle = q("[data-outro-title]");
     const revealEls = qa("[data-reveal]");
     const prevRestoration = history.scrollRestoration;
-    const prevOverflow = document.body.style.overflow;
 
     let lenis = null;
     let tick = null;
     let headChars = null;
-    let outroChars = null;
     let cancelled = false;
-
-    // Always start at top so preloader and pinned stage line up
-    history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
 
     const ctx = gsap.context(() => {
       /* ---------- Smooth scrolling (Lenis) ---------- */
@@ -95,10 +88,10 @@ export function NavigateHero({
           lenis = window.__lenis;
         } else {
           lenis = new Lenis({
-            duration: 1.1,
+            duration: 1.0,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo out
             smoothWheel: true,
-            touchMultiplier: 1.6,
+            touchMultiplier: 1.5,
           });
           window.__lenis = lenis;
           lenis.on("scroll", ScrollTrigger.update);
@@ -120,125 +113,116 @@ export function NavigateHero({
         });
       }
 
-      /* ---------- Scroll: hero pins, video scales, copy lifts, outro slides over ---------- */
+      /* ---------- Scroll: natural smooth parallax into next section ---------- */
       function scroll() {
         if (reduceMotion) return;
+        const heroEl = q("[data-hero]");
+        if (!heroEl) return;
+
         const heroTl = gsap.timeline({
           scrollTrigger: {
-            trigger: q("[data-hero]"),
+            trigger: heroEl,
             start: "top top",
-            end: "+=100%",
-            scrub: true,
-            pin: true,
-            pinSpacing: false,
-            invalidateOnRefresh: true,
+            end: "bottom top",
+            scrub: 0.4,
           },
         });
 
-        // Every headline letter drifts up at its own speed (random 18% to 80% screen height)
+        // Every headline letter drifts up at its own speed
         headChars?.masks.forEach((c) => {
-          const speed = parseFloat(c.dataset.speed ?? "0.5");
-          heroTl.to(c, { y: () => -window.innerHeight * speed, ease: "none", duration: 1 }, 0);
+          const speed = parseFloat(c.dataset.speed ?? "0.35");
+          heroTl.to(c, { y: () => -window.innerHeight * speed * 0.4, ease: "none" }, 0);
         });
 
-        // Parallax elements upward at their own speeds
+        // Parallax copy elements upward and fade out smoothly
         qa("[data-parallax]").forEach((p) => {
-          const speed = parseFloat(p.dataset.parallax ?? "0.5");
-          heroTl.to(p, { y: () => -window.innerHeight * speed, ease: "none", duration: 1 }, 0);
+          const speed = parseFloat(p.dataset.parallax ?? "0.35");
+          heroTl.to(p, { y: () => -window.innerHeight * speed * 0.3, ease: "none" }, 0);
         });
 
-        // Top copy fades first (over first quarter); bottom row later (10% to 60%)
-        heroTl.to(qa("[data-top-copy]"), { autoAlpha: 0, ease: "power1.in", duration: 0.25 }, 0);
-        heroTl.to(qa("[data-bottom-copy]"), { autoAlpha: 0, ease: "power1.in", duration: 0.5 }, 0.1);
+        heroTl.to(qa("[data-top-copy], [data-bottom-copy]"), { autoAlpha: 0, ease: "power1.in", duration: 0.3 }, 0);
 
-        // Solid black slab rides up just ahead of the second screen
-        heroTl.to(q("[data-fade]"), { y: () => -window.innerHeight, ease: "none", duration: 1 }, 0);
-
-        // Background video eases back to 1.14x for cinematic depth
-        heroTl.to(q("[data-video]"), { scale: 1.14, ease: "none", duration: 1 }, 0);
-
-        // Handle on the second screen rises letter by letter from middle at 55% scroll
-        if (outroChars) {
-          gsap.to(outroChars.inners, {
-            yPercent: 0,
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: { each: 0.03, from: "center" },
-            scrollTrigger: {
-              trigger: q("[data-outro]"),
-              start: "top 55%",
-              once: true,
-            },
-          });
+        // Background video subtle zoom for cinematic depth
+        const videoEl = q("[data-video]");
+        if (videoEl) {
+          heroTl.to(videoEl, { scale: 1.15, ease: "none" }, 0);
         }
       }
 
       /* ---------- Intro: letters rise centre-out, then everything else fades up ---------- */
       function intro() {
         const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-        tl.to(headChars.inners, { yPercent: 0, duration: 1.4, stagger: { each: 0.09, from: "center" } }, 0);
-        tl.to(revealEls, { autoAlpha: 1, y: 0, duration: 1.6, ease: "power3.out", stagger: 0.07 }, 0.45);
+        if (headChars?.inners) {
+          tl.to(headChars.inners, { yPercent: 0, duration: 1.1, stagger: { each: 0.05, from: "center" } }, 0);
+        }
+        tl.to(revealEls, { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.04 }, 0.25);
         return tl;
       }
 
       function finishLoading() {
-        if (loader) loader.style.display = "none";
-        document.body.style.overflow = prevOverflow;
+        if (loader) {
+          loader.style.display = "none";
+          loader.style.pointerEvents = "none";
+        }
       }
 
-      /* ---------- Preloader: 00 → 100, then curtain lifts ---------- */
+      /* ---------- Fast, silky smooth preloader: instant and crisp ---------- */
       function preload() {
         if (reduceMotion) {
           finishLoading();
-          gsap.set([headChars.inners, outroChars.inners], { yPercent: 0 });
+          if (headChars?.inners) gsap.set(headChars.inners, { yPercent: 0 });
           gsap.set(revealEls, { autoAlpha: 1, y: 0 });
+          scroll();
           return;
         }
 
-        lenis?.stop();
-        document.body.style.overflow = "hidden";
         const state = { n: 0 };
         const tl = gsap.timeline({
           onComplete: () => {
             finishLoading();
-            lenis?.start();
-            // Scroll timeline is built only now, so start values are from settled hero
             scroll();
           },
         });
 
-        // Counter counts from 00 to 100 over 2.2s (power2.inOut)
+        // Snappy counter from 00 to 100 in 0.3s
         tl.to(state, {
           n: 100,
-          duration: 2.2,
-          ease: "power2.inOut",
+          duration: 0.32,
+          ease: "power2.out",
           onUpdate: () => {
             if (counter) counter.textContent = String(Math.round(state.n)).padStart(2, "0");
           },
         });
 
-        // 0.25s after reaching 100, curtain slides up and off screen (1.1s, power4.inOut)
-        tl.to(loader, { yPercent: -100, duration: 1.1, ease: "power4.inOut" }, "+=0.25");
-        // Starting 0.55s before curtain has finished lifting, headline letters rise
-        tl.add(intro(), "-=0.55");
+        // Fast curtain lift in 0.4s
+        tl.to(loader, { yPercent: -100, duration: 0.45, ease: "power3.inOut" }, "+=0.04");
+        // Headline letters rise into view
+        tl.add(intro(), "-=0.3");
       }
 
-      // Fonts first so letter widths & kerning can be measured accurately
-      document.fonts.ready.then(() => {
+      // Initialize without waiting indefinitely for network fonts
+      const initHero = () => {
         if (cancelled) return;
         headChars = split(headlineEl);
-        outroChars = split(outroTitle);
-        gsap.set(revealEls, { autoAlpha: 0, y: 40 });
-        gsap.set([headChars.inners, outroChars.inners], { yPercent: 110 });
-
-        // Each headline letter gets its own parallax speed fixed once (0.18 to 0.80)
-        headChars.masks.forEach((c) => {
-          c.dataset.speed = (0.18 + Math.random() * 0.62).toFixed(3);
-        });
-
+        gsap.set(revealEls, { autoAlpha: 0, y: 30 });
+        if (headChars?.inners) {
+          gsap.set(headChars.inners, { yPercent: 110 });
+          headChars.masks.forEach((c) => {
+            c.dataset.speed = (0.2 + Math.random() * 0.4).toFixed(3);
+          });
+        }
         smoothScroll();
         preload();
-      });
+      };
+
+      if (document.fonts?.ready) {
+        Promise.race([
+          document.fonts.ready,
+          new Promise((resolve) => setTimeout(resolve, 150)),
+        ]).then(initHero);
+      } else {
+        initHero();
+      }
     }, el);
 
     return () => {
@@ -246,9 +230,7 @@ export function NavigateHero({
       ctx.revert();
       if (tick) gsap.ticker.remove(tick);
       if (headChars) headlineEl.textContent = headChars.text;
-      if (outroChars) outroTitle.textContent = outroChars.text;
       if (loader) loader.style.display = "";
-      document.body.style.overflow = prevOverflow;
       history.scrollRestoration = prevRestoration;
     };
   }, []);
@@ -321,14 +303,11 @@ export function NavigateHero({
         {/* Tagline removed per instructions */}
         {/* In The New bottom-right card removed per instructions */}
 
-        {/* Bottom fade into the next section */}
-        <div className="tds-navhero__fade" data-fade aria-hidden="true" />
-
         <a
           className="tds-navhero__learn"
-          href="#tds-navhero-outro"
+          href="#brand-growth-hero"
           data-reveal
-          data-parallax="0.55"
+          data-parallax="0.35"
           data-bottom-copy
         >
           <svg
@@ -361,23 +340,16 @@ export function NavigateHero({
             }
           }}
           data-reveal
-          data-parallax="0.45"
+          data-parallax="0.3"
           data-top-copy
         >
           [&nbsp;&nbsp;WORK WITH US&nbsp;&nbsp;]
         </a>
 
         {/* Copyright Bottom Left */}
-        <p className="tds-navhero__copyright" data-reveal data-parallax="0.55" data-bottom-copy>
-          © 2026 {brand}. All rights reserved.
+        <p className="tds-navhero__copyright" data-reveal data-parallax="0.35" data-bottom-copy>
+          © {new Date().getFullYear()} {brand}. All rights reserved.
         </p>
-      </section>
-
-      {/* ============ HANDLE (SECOND SCREEN) ============ */}
-      <section className="tds-navhero__outro" id="tds-navhero-outro" data-outro>
-        <h2 className="tds-navhero__outro-title" data-outro-title>
-          {handle}
-        </h2>
       </section>
     </div>
   );

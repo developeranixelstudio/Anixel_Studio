@@ -183,19 +183,6 @@
   will-change: transform;
 }
 
-/* The bottom fade is one viewport taller than it looks: a solid slab below the fold rides up just
-   ahead of the handle section on scroll, so the two sections blend through the gradient. */
-.tds-navhero__fade {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -100vh;
-  height: 138.4vh;
-  background: linear-gradient(to top, #030303 0%, #030303 calc(100% - 38.4vh), rgba(3, 3, 3, 0) 100%);
-  pointer-events: none;
-  will-change: transform;
-}
-
 .tds-navhero__learn {
   position: absolute;
   left: 27.25vw;
@@ -209,6 +196,11 @@
   letter-spacing: -0.21px;
   line-height: normal;
   white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.tds-navhero__learn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 .tds-navhero__learn svg {
   display: block;
@@ -227,6 +219,10 @@
   line-height: normal;
   text-align: right;
   white-space: nowrap;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.tds-navhero__work:hover {
+  color: #d4af37;
 }
 
 .tds-navhero__copyright {
@@ -239,27 +235,6 @@
   line-height: normal;
   color: var(--tds-nh-cream);
   white-space: nowrap;
-}
-
-/* ---------- Handle (second screen) ---------- */
-.tds-navhero__outro {
-  position: relative;
-  z-index: 2;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--tds-nh-bg);
-  display: grid;
-  place-items: center;
-}
-.tds-navhero__outro-title {
-  font-family: var(--font-subheadings, "TF Mighu", "Clash Grotesk", "Switzer", system-ui, sans-serif);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: normal;
-  letter-spacing: 0.05em;
-  color: #fff;
-  white-space: nowrap;
-  text-transform: uppercase;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -314,15 +289,5 @@
   .tds-navhero__learn svg {
     width: 18px;
     height: 18px;
-  }
-  /* scene sits low on phones, so fade is shallower */
-  .tds-navhero__fade {
-    height: 122vh;
-    background: linear-gradient(
-      to top,
-      #030303 0%,
-      #030303 calc(100% - 22vh),
-      rgba(3, 3, 3, 0) 100%
-    );
   }
 }

@@ -10,6 +10,8 @@ import { FinalCTASection } from './components/sections/FinalCTASection';
 import { Footer } from './components/Footer';
 import LegalModal from './components/LegalModal';
 import ContactModal from './components/ContactModal';
+import CustomCursor from './components/CustomCursor';
+import './styles/cinema-3d.css';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -60,6 +62,14 @@ export default function App() {
         flexDirection: 'column',
       }}
     >
+      {/* Interactive 3D Gold Custom Cursor */}
+      <CustomCursor />
+
+      {/* Cinematic 3D Lighting & Texture Overlays */}
+      <div className="cinema-grain" aria-hidden="true" />
+      <div className="cinema-vignette" aria-hidden="true" />
+      <div className="ambient-glow-bg" aria-hidden="true" />
+
       {/* =========================================================================
           PAGE 1: NAVIGATE CINEMATIC HERO (ANIXEL STUDIO)
           - Full-screen preloader with 00 to 100 serif counter
@@ -67,8 +77,25 @@ export default function App() {
           - Letters of "ANIXEL STUDIO" rise from center outwards (1.4s power4.out)
           - Fixed navigation, logo, work links fade up
           - Scroll-pinned hero with individual letter drift speeds & outro handle
+          - Real-time 3D Three.js gold core scene with orbiting rings & floating geometries
           ========================================================================= */}
       <NavigateCinematicHeroDemo onOpenContact={handleOpenContact} />
+
+      {/* Global 3D Kinetic Ticker */}
+      <div className="global-ticker" aria-hidden="true">
+        <div className="global-ticker-track">
+          {[...Array(6)].map((_, i) => (
+            <span key={i} className="global-ticker-item">
+              ANIXEL STUDIO <span className="global-ticker-dot">◆</span> DIGITAL AGENCY{' '}
+              <span className="global-ticker-dot">◆</span> BRAND STRATEGY{' '}
+              <span className="global-ticker-dot">◆</span> CREATIVE SOLUTIONS{' '}
+              <span className="global-ticker-dot">◆</span> 3D &amp; MOTION{' '}
+              <span className="global-ticker-dot">◆</span> NEXT-GEN EXPERIENCES{' '}
+              <span className="global-ticker-dot">◆</span>{' '}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* Main Content following the Cinematic Outro Handle */}
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>

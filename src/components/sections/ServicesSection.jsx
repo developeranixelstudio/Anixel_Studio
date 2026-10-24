@@ -1,12 +1,54 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Suspense, lazy } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ShinyText } from '../ui/react-bits/ShinyText';
 import { SpotlightCard } from '../ui/react-bits/SpotlightCard';
 import { Magnet } from '../ui/react-bits/Magnet';
 import { BlurText } from '../ui/react-bits/BlurText';
+import { CardsRotateSlider } from '../ui/cards-rotate-slider';
 import './services-section.css';
+
+const ThreeSectionOrb = lazy(() => import('../three/ThreeSectionOrb'));
+
+const CAPABILITIES_SLIDES = [
+  {
+    text: 'Digital Marketing & Lead Generation',
+    eyebrow: 'Growth & Media',
+    description: 'Paid campaigns, social strategy, conversion funnels, and performance systems engineered for measurable growth.',
+    src: '/capabilities/capability-1.webp',
+  },
+  {
+    text: 'SEO, AEO & GEO',
+    eyebrow: 'Search & Discovery',
+    description: 'Search architecture that builds visibility across traditional search, answer engines, and AI discovery.',
+    src: '/capabilities/capability-2.webp',
+  },
+  {
+    text: 'Branding & Creative Design',
+    eyebrow: 'Brand Architecture',
+    description: 'Distinctive identities, design systems, and digital interfaces built to make brands recognizable and coherent.',
+    src: '/capabilities/capability-3.webp',
+  },
+  {
+    text: 'Website & App Development',
+    eyebrow: 'Digital Engineering',
+    description: 'High-performance websites, commerce platforms, and applications with thoughtful interactions and scalable foundations.',
+    src: '/capabilities/capability-4.webp',
+  },
+  {
+    text: 'Creative Content Production',
+    eyebrow: 'Studio & Cinema',
+    description: 'Cinematic video, animation, product photography, and visual storytelling that turns ideas into culture.',
+    src: '/capabilities/capability-5.webp',
+  },
+  {
+    text: 'Business Technology Solutions',
+    eyebrow: 'Enterprise Tech',
+    description: 'Tailored CRM, ERP, cloud, and workflow systems that connect operations and help teams move faster.',
+    src: '/capabilities/capability-6.webp',
+  },
+];
 
 const SERVICES_DATA = [
   {
@@ -188,6 +230,12 @@ export function ServicesSection({ onKnowMore, onOpenContact }) {
       <div className="services-ambient-glow-secondary" aria-hidden="true" />
       <div className="services-grid-pattern" aria-hidden="true" />
 
+      {/* 3D Floating Orbs */}
+      <Suspense fallback={null}>
+        <ThreeSectionOrb size={180} shape="octahedron" speed={0.6} style={{ top: '6%', right: '3%' }} />
+        <ThreeSectionOrb size={120} shape="icosahedron" speed={1.3} style={{ bottom: '8%', left: '1%' }} />
+      </Suspense>
+
       <div className="services-container">
         {/* Header Area with React Bits ShinyText & Bidirectional Text Reveal */}
         <div className="services-header" ref={headerRef}>
@@ -230,6 +278,16 @@ export function ServicesSection({ onKnowMore, onOpenContact }) {
             </Magnet>
           </div>
         </div>
+
+        {/* 3D Horizontal Rotating Card Capabilities Slider */}
+        <CardsRotateSlider
+          images={CAPABILITIES_SLIDES}
+          rotationAmount={1.05}
+          verticalDrift={0.9}
+          perspective={1100}
+          scrollSmoothing={0.85}
+          textColor="#F9F6EA"
+        />
 
         {/* 6 Services Spotlight Cards Grid */}
         <div className="services-grid" ref={gridRef}>
